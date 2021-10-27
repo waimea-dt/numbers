@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Roboto&display=swap');
+
+/*** GENERAL *******************************************/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: #036;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    width: 1200px;
+    margin: 1em auto 5em;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-shadow: 0 0.1em 0.1em rgba(0,0,0,0.6);
+}
+
+body.home {
+    width: 600px;
+}
+
+#mainheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /*padding-bottom: 1em;*/
+    /*border-bottom: 2px solid rgba(255,255,255,0.5);*/
+    margin-bottom: 3em;
+}
+
+#mainheader h1 {
+}
+
+#mainheader h2,
+#mainheader h3 {
+    width: 100%;
+    margin: 0;
+}
+
+
+/*** TEXT *******************************************/
+
+h1 {
+    font-size: 2.5em;
+    color: #fff;
+}
+
+h1 em {
+    color: #f00;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 2em;
+    margin: 0;
+    color: #ff0;
+    /*text-transform: uppercase;*/
+}
+
+h3 {
+    font-size: 1.6em;
+    font-weight: normal;
+    margin: 0.3em 0;
+    color: #fff;
+}
+
+h3 em {
+    color: #ff0;
+    font-style: normal;
+}
+
+
+p.note {
+    font-size: 0.7em;
+    color: #68a;
+    margin: 0;
+    text-shadow: none;
+}
+
+sup {
+    font-size: 0.6em;
+}
+
+
+/*** NAV *******************************************/
+
+#homenav {
+    width: 100%;
+}
+
+#homenav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#homenav input,
+#homenav label {
+    display: none;
+}
+
+#mainnav input {
+    display: none;           /* Hide the checkbox */
+}
+
+#mainnav ul {
+    position: fixed;         /* Lock to screen */
+    top: 0;                  /* Fixed to top edge */
+    right: -500px;
+    width: 500px;
+    height: 100vh;           /* Whole screen height */
+    margin: 0;               /* No gaps around the menu */
+    overflow: hidden;        /* Stop menu buttons from resizing menu */
+    padding: 1em 1em 0.5em;
+    list-style: none;
+    background: #369;
+    transition: all 250ms;   /* Animation timing */
+    z-index: 1000;           /* Keep above all other elements */
+    box-shadow: none;
+    border-left: 2px solid #fff;
+}
+
+#mainnav input:checked ~ ul {
+    right: 0em;             /* Open up width when menu icon clicked */
+    box-shadow: -1em 0 1em rgba(0,0,0,0.5);
+}
+
+#mainnav label {
+    display: block;
+    font-size: 2em;         /* Large menu icon */
+    text-align: right;
+    cursor: pointer;          /* Use a link-style cursor */
+}
+
+nav ul li {
+    display: block;
+    margin: 0 0 1.2em 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+    background: #fff;
+    font-size: 1.6em;
+    color: #000;
+    padding: 0.3em 0.6em;
+    box-shadow: 0 0.05em 0.1em rgba(0,0,0,0.5);
+    transition: all 250ms;
+    text-shadow: none;
+}
+
+nav ul li a em {
+    font-style: normal;
+    font-weight: bold;
+    color: #f00;
+}
+
+nav ul li a:hover {
+    background: #ff0;
+    box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.5);
+    transform: translateX( -0.3em );
+}
+
+
+
+
+/*** EXPLORE DIGITS *******************************************/
+
+.explore {
+    display: flex;
+    width: 100%;
+    margin-top: 1.5em;
+    justify-content: space-between;
+}
+
+.explore header {
+    width: 13%;
+    padding-top: 2.5em;
+    text-align: left;
+}
+
+.explore .value {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/*-- Controls ----------------------------*/
+
+.explore .controls {
+    width: 5%;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.explore .controls .control {
+    font-size: 1em;
+    color: #68a;
+    text-align: center;
+    text-shadow: none;
+}
+
+.explore .controls .control .symbol {
+    font-size: 1.8em;
+    /*line-height: 1em;*/
+    display: block;
+}
+
+.explore .controls .control:hover {
+    color: #f00;
+    cursor: pointer;
+}
+
+
+/*-- Labels ----------------------------*/
+
+.explore-labels {
+    display: flex;
+    width: 100%;
+}
+
+.explore-labels label {
+    flex: 1;
+    font-size: 2em;
+    text-align: center;
+    position: relative;
+}
+
+.explore-labels label[data-width="2"] { flex-grow: 2; }
+.explore-labels label[data-width="3"] { flex-grow: 3; }
+.explore-labels label[data-width="4"] { flex-grow: 4; }
+
+.explore-labels label .power {
+    color: #68a;
+    font-size: 0.7em;
+    text-shadow: none;
+}
+
+.explore-labels label.gap {
+    flex: 0 0 0.8em;
+}
+
+
+/*-- Digits ----------------------------*/
+
+.explore-digits {
+    display: flex;
+    width: 100%;
+}
+
+.explore-digits .digitblock {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.explore-digits .digitblock[data-width="2"] { flex-grow: 2; }
+.explore-digits .digitblock[data-width="3"] { flex-grow: 3; }
+.explore-digits .digitblock[data-width="4"] { flex-grow: 4; }
+
+
+.explore-digits .digitblock.gap {
+    flex: 0 0 0.8em;
+}
+
+
+.explore-digits .digit {
+    font-size: 6em;
+    border: 4px solid #000;
+    margin: 0 -2px;
+    font-weight: bold;
+    color: #000;
+    padding: 0;
+    line-height: 0.9em;
+    position: relative;
+    text-shadow: none;
+}
+
+.explore-digits .digit .decvalue {
+    position: absolute;
+    right: 0.3em;
+    bottom: 0.5em;
+    display: block;
+    font-size: 0.2em;
+    line-height: 0.9em;
+    color: rgba(0,0,0,0.5);
+}
+
+
+/*-- Digit Controls ----------------------------*/
+
+.explore-digits .control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    cursor: pointer;
+    font-size: 1.8em;
+    text-align: right;
+    color: red;
+    z-index: 999;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    text-shadow: none;
+}
+
+.explore-digits .control:hover {
+    opacity: 100%;
+}
+
+.explore-digits .control.up   { top: 0;   align-items: flex-start;}
+.explore-digits .control.down { top: 50%; align-items: flex-end; }
+
+.explore-digits .digit.isNotZero       { background: #ff0; }
+.explore-digits .digit:not(.isNotZero) { background: #fff; }
+
+.explore-labels label.isUsed          { color: #f00; }
+.explore-labels label:not(.isUsed)    { color: inherit; }
+
+
+
+/*** DECIMAL RESULT *******************************************/
+
+#result {
+    display: flex;
+    width: 100%;
+    margin-top: 2em;
+    justify-content: space-between;
+}
+
+#result header {
+    width: 13%;
+}
+
+#result .value {
+    width: 86%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+/*-- Calculation ----------------------------*/
+
+#result-calc {
+    font-size: 1.4em;
+    line-height: 1.2em;
+    padding-left: 2em;
+}
+
+#result-calc p {
+    margin: 0.3em 0;
+}
+
+#result-calc .digit {
+    color: #ff0;
+}
+
+#result-calc .column {
+    /*font-size: 1.5em;*/
+    color: #f00;
+}
+
+/*-- Dec Value ----------------------------*/
+
+#result-value {
+    color: #fff;
+    /*text-shadow: 0 0.05em 0.1em rgba(0,0,0,0.5);*/
+    font-size: 6em;
+    font-weight: bold;
+    line-height: 0.8em;
+    margin-bottom: 0.2em;
+    /*padding-top: 0.2em;*/
+}
+
+
+
+
+/*** ASCII RESULT *******************************************/
+
+#ascii {
+    display: flex;
+    width: 100%;
+    margin-top: 2em;
+    justify-content: space-between;
+}
+
+#ascii header {
+    width: 13%;
+}
+
+#ascii .value {
+    width: 86%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/*-- ASCII char ----------------------------*/
+
+#ascii-character {
+    background: #ff0;
+    color: #000;
+    font-size: 6em;
+    font-weight: bold;
+    line-height: 0.8em;
+    margin-bottom: 0.2em;
+    padding: 0.2em 0.1em;
+    min-width: 1.4em;
+    height: 1.4em;
+    text-align: center;
+    text-shadow: none;
+    border-radius: 0.1em;
+    border: 3px solid #000;
+}
+
+#ascii-character.isControl {
+    background: #fff;
+    color: #333;
+    font-size: 3em;
+    padding: 0.9em 0.1em;
+    min-width: 2.8em;
+    height: auto;
+    text-align: center;
+    text-shadow: none;
+    border-radius: 0.2em;
+}
+
+#ascii-character.isSpace {
+    /*border-bottom: 8px dotted rgba(255,255,255,0.3);*/
+    color: rgba(0,0,0,0.2);
+}
+
+#ascii-description {
+    font-size: 3em;
+    line-height: 1.2em;
+    padding-left: 1em;
+}
+
+#ascii-description em {
+    color: #f00;
+    font-style: normal;
+}
+
+
+
+/*** Colour RESULT *******************************************/
+
+#colour {
+    display: flex;
+    width: 100%;
+    margin-top: 2em;
+    justify-content: space-between;
+}
+
+#colour header {
+    width: 13%;
+}
+
+#colour .value {
+    width: 86%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    user-select: text;
+}
+
+/*-- Colour Patch ----------------------------*/
+
+h2.Red,   #r-dec-value, #r-hex-value { color: #f33; }
+h2.Green, #g-dec-value, #g-hex-value { color: #7f7; }
+h2.Blue,  #b-dec-value, #b-hex-value { color: #59f; }
+
+#colour-patch {
+    background: #000;
+    font-size: 6em;
+    min-width: 1.4em;
+    height: 1.4em;
+    border-radius: 0.1em;
+    border: 3px solid #000;
+}
+
+/*-- Colour Values ----------------------------*/
+
+#decimal-value,
+#hex-value {
+    color: #fff;
+    font-size: 4em;
+    line-height: 1em;
+    margin: 0.2em 0 0 0.7em;
+    user-select: all;
+}
+
+#decimal-value span,
+#hex-value span {
+    font-weight: bold;
+}
+
+#hex-value {
+    font-family: 'Fira Mono', monospace;
+}
+
